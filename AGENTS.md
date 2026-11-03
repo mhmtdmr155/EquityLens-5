@@ -66,3 +66,4 @@ Kullanıcı oturumu sonlandırmaya yönelik ifadeler kullandığında (örn. *"B
      * Değişiklikler mantıklı gruplara ayrılarak anlamlı commit mesajları yazılır (örn. `feat: ...`, `fix: ...`, `chore: ...`, `docs: ...`, `test: ...`).
      * `origin` ve `main` doğrulanarak güvenli normal push (`git push origin main`) gerçekleştirilir.
      * Uzak GitHub deposu teyit edilir.
+
