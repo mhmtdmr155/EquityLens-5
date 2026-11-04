@@ -67,3 +67,46 @@ Kullanıcı oturumu sonlandırmaya yönelik ifadeler kullandığında (örn. *"B
      * `origin` ve `main` doğrulanarak güvenli normal push (`git push origin main`) gerçekleştirilir.
      * Uzak GitHub deposu teyit edilir.
 
+---
+
+## 6. Prompt ve Rapor Numaralandırma Protokolü (Kalıcı Kural)
+Kullanıcı birden fazla proje yürüttüğünden, her görevin ve raporun kesin ve standart bir kimliği olacaktır:
+1. **Görev Promptu Başlığı:** Her görev promptu `EL5-XXX PROMPTU` (örn. `EL5-010 PROMPTU`) veya düzeltme durumunda `EL5-XXX-D01 PROMPTU` şeklinde adlandırılır.
+2. **Görev Raporu Başlığı:** Asistan tarafından üretilen her teknik raporun en ilk satırı `EQUITYLENS-5 | EL5-XXX RAPORU` veya düzeltme durumunda `EQUITYLENS-5 | EL5-XXX-D01 RAPORU` ile başlar.
+3. **Zorunlu Başlık Metaverisi:** Her raporun ilk bölümünde aşağıdaki alanlar eksiksiz listelenir:
+   * Proje Adı
+   * Prompt Kimliği
+   * Görev Kodu
+   * Aşama
+   * Görev Adı
+   * Tarih
+   * Sonuç
+4. Bu kural projenin sonraki tüm geliştirme ve denetim aşamalarında bağlayıcıdır.
+
+---
+
+## 7. Kalıcı Rapor Kapanış Protokolü (Kalıcı Kural)
+Rapor karmaşasını ve yarım kalan yanıtları önlemek amacıyla, her raporun EN SONUNDA büyük harflerle, ayrı ve belirgin bir kapanış bildirimi yer alacaktır:
+
+1. **Görev Tamamlandıysa:**
+   ```text
+   EL5-XXX PROMPTUNU TAMAMLADIM.
+   CHATGPT'NİN YENİ PROMPTUNU BEKLİYORUM.
+   ```
+2. **Görev Kısmen Tamamlandıysa:**
+   ```text
+   EL5-XXX PROMPTUNU KISMEN TAMAMLADIM.
+   SONUÇ: PARTIAL.
+   CHATGPT'NİN YENİ PROMPTUNU BEKLİYORUM.
+   ```
+3. **Görev Engellendiyse veya Canlı Erişim Kısıtlıysa:**
+   ```text
+   EL5-XXX GÖREVİ BLOKE OLDU.
+   SONUÇ: BLOCKED.
+   CHATGPT'NİN YENİ PROMPTUNU BEKLİYORUM.
+   ```
+   *(Not: Çevrimdışı testler başarılı ancak canlı kimlik bilgileri eksikse `SONUÇ: PARTIAL / LIVE BLOCKED.` formatı kullanılır).*
+
+4. **Kesin Kapanış Şartı:** Bu metin raporun mutlak en son satırı olmalıdır. Bu metinden sonra hiçbir ek başlık, öneri, sonraki görev tahmini veya kapanış notu yazılmayacaktır.
+5. **Raporlama Bütünlüğü:** Raporlarda başlık tekrarı yapılmayacak, yarım bırakılmış bölüm bırakılmayacak, aynı rapor mükerrer eklenmeyecek, PASS ve BLOCKED durumları birbirine karıştırılmayacaktır.
+
