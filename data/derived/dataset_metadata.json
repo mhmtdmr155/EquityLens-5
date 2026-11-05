@@ -1,0 +1,134 @@
+{
+  "dataset_name": "EquityLens-5 Technical Features & ML Targets",
+  "dataset_version": "1.0.0",
+  "generated_at_utc": "2026-11-05T14:55:49.659860+00:00",
+  "source_database": "C:\\Users\\mehme\\Desktop\\Machine-Learning\\data\\equitylens_dev.db",
+  "data_provider": "alpaca",
+  "data_feed": "iex",
+  "price_adjustment": "raw",
+  "corporate_actions_note": "Prices are raw (unadjusted for splits and cash dividends). One diagnostic jump observed (DELL on 2026-05-29 at +32.75% due to earnings). No unadjusted stock split distortions identified within 2024-11 to 2026-10 window.",
+  "total_symbols": 5,
+  "symbols": [
+    "AAPL",
+    "DELL",
+    "MU",
+    "NVDA",
+    "SPCX"
+  ],
+  "spacex_ipo_constraint": "SPCX data strictly constrained to post-IPO sessions (>= 2026-06-12).",
+  "column_specifications": {
+    "metadata_columns": [
+      "ticker",
+      "company_name",
+      "session_date"
+    ],
+    "raw_price_columns": [
+      "open",
+      "high",
+      "low",
+      "close",
+      "volume"
+    ],
+    "feature_columns": [
+      "return_1d",
+      "return_5d",
+      "return_10d",
+      "sma_5",
+      "sma_10",
+      "sma_20",
+      "ema_5",
+      "ema_10",
+      "ema_20",
+      "rsi_14",
+      "macd_12_26",
+      "macd_signal_9",
+      "macd_histogram",
+      "rolling_volatility_5",
+      "rolling_volatility_20",
+      "bollinger_mid_20",
+      "bollinger_upper_20",
+      "bollinger_lower_20",
+      "volume_sma_20",
+      "volume_ratio_20",
+      "close_to_sma_20",
+      "close_to_ema_20",
+      "bollinger_position"
+    ],
+    "target_columns": [
+      "future_return_5d",
+      "direction_5d",
+      "future_return_20d",
+      "direction_20d"
+    ],
+    "total_feature_count": 23,
+    "total_target_count": 4
+  },
+  "row_counts": {
+    "features_all": 2098,
+    "ml_train_5d": 1908,
+    "ml_train_20d": 1833,
+    "prediction_ready": 25
+  },
+  "target_class_balance": {
+    "direction_5d": {
+      "positive_label_1": 0.5802,
+      "non_positive_label_0": 0.4198
+    },
+    "direction_20d": {
+      "positive_label_1": 0.6378,
+      "non_positive_label_0": 0.3622
+    }
+  },
+  "symbol_breakdown": {
+    "AAPL": {
+      "total_raw_bars": 500,
+      "start_date": "2024-11-01",
+      "end_date": "2026-10-30",
+      "train_5d_samples": 462,
+      "train_20d_samples": 447,
+      "prediction_ready_samples": 5,
+      "target_5d_positive_ratio": 0.5476,
+      "target_20d_positive_ratio": 0.6242
+    },
+    "DELL": {
+      "total_raw_bars": 500,
+      "start_date": "2024-11-01",
+      "end_date": "2026-10-30",
+      "train_5d_samples": 462,
+      "train_20d_samples": 447,
+      "prediction_ready_samples": 5,
+      "target_5d_positive_ratio": 0.5823,
+      "target_20d_positive_ratio": 0.6309
+    },
+    "MU": {
+      "total_raw_bars": 500,
+      "start_date": "2024-11-01",
+      "end_date": "2026-10-30",
+      "train_5d_samples": 462,
+      "train_20d_samples": 447,
+      "prediction_ready_samples": 5,
+      "target_5d_positive_ratio": 0.6212,
+      "target_20d_positive_ratio": 0.6913
+    },
+    "NVDA": {
+      "total_raw_bars": 500,
+      "start_date": "2024-11-01",
+      "end_date": "2026-10-30",
+      "train_5d_samples": 462,
+      "train_20d_samples": 447,
+      "prediction_ready_samples": 5,
+      "target_5d_positive_ratio": 0.5693,
+      "target_20d_positive_ratio": 0.5928
+    },
+    "SPCX": {
+      "total_raw_bars": 98,
+      "start_date": "2026-06-12",
+      "end_date": "2026-10-30",
+      "train_5d_samples": 60,
+      "train_20d_samples": 45,
+      "prediction_ready_samples": 5,
+      "target_5d_positive_ratio": 0.5833,
+      "target_20d_positive_ratio": 0.7556
+    }
+  }
+}
