@@ -70,6 +70,7 @@ data/*.sqlite
 data/*.sqlite3
 data/derived/*.csv
 data/sec_cache/
+data/market_cache/
 
 # --- Operating System Artifacts ---
 Thumbs.db
