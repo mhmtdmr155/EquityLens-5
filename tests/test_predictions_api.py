@@ -133,3 +133,58 @@ def test_prediction_responses_contain_no_secrets(api_client: TestClient) -> None
     forbidden_terms = ["PK", "SECRET", "Bearer", "api_key", "password"]
     for term in forbidden_terms:
         assert term not in content
+
+
+def test_prediction_determinism_and_actual_scores(api_client: TestClient) -> None:
+    """Verify that prediction model is strictly deterministic and produces confirmed scores.
+
+    Confirms AAPL yields prob_up=0.612 and SPCX yields prob_up=0.6077 as established in EL5-050.
+    """
+    # Determinism check: multiple calls must yield identical outputs
+    res1 = api_client.get("/api/v1/predictions/AAPL")
+    res2 = api_client.get("/api/v1/predictions/AAPL")
+    assert res1.status_code == 200
+    assert res2.status_code == 200
+    d1 = res1.json()
+    d2 = res2.json()
+
+    assert d1["predicted_direction"] == d2["predicted_direction"]
+    assert d1["probability_up"] == d2["probability_up"]
+    assert d1["as_of_date"] == d2["as_of_date"]
+
+    # Verify exact production scores
+    assert d1["probability_up"] == 0.612
+    assert d1["predicted_direction"] == 1
+
+    res_spcx = api_client.get("/api/v1/predictions/SPCX")
+    assert res_spcx.status_code == 200
+    d_spcx = res_spcx.json()
+    assert d_spcx["probability_up"] == 0.6077
+    assert d_spcx["predicted_direction"] == 1
+
+
+def test_technical_features_integrity_no_atr() -> None:
+    """Verify that technical feature columns count is exactly 23 and does not contain ATR."""
+    from backend.app.features import FEATURE_COLUMNS
+
+    assert len(FEATURE_COLUMNS) == 23
+    assert "atr" not in FEATURE_COLUMNS
+    assert "ATR" not in FEATURE_COLUMNS
+    assert "return_1d" in FEATURE_COLUMNS
+    assert "rsi_14" in FEATURE_COLUMNS
+    assert "macd_12_26" in FEATURE_COLUMNS
+    assert "bollinger_position" in FEATURE_COLUMNS
+
+
+def test_spacex_official_sec_cik_integrity(api_client: TestClient) -> None:
+    """Verify that SpaceX company entity strictly carries official SEC CIK 0001181412."""
+    response = api_client.get("/api/v1/companies")
+    assert response.status_code == 200
+    companies = response.json()
+
+    spcx_comp = next(
+        (c for c in companies if any(s["ticker"] == "SPCX" for s in c["securities"])), None
+    )
+    assert spcx_comp is not None, "SPCX company record missing"
+    assert spcx_comp["sec_cik"] == "0001181412"
+    assert spcx_comp["sec_cik"] != "0001174922", "SPCX must not use Wynn Resorts CIK 0001174922"
