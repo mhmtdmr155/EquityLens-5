@@ -61,6 +61,16 @@ dist-ssr/
 *.temp
 logs/
 
+# --- Local Databases & Data Stores ---
+*.db
+*.sqlite
+*.sqlite3
+data/*.db
+data/*.sqlite
+data/*.sqlite3
+data/derived/*.csv
+data/sec_cache/
+
 # --- Operating System Artifacts ---
 Thumbs.db
 ehthumbs.db

@@ -110,3 +110,14 @@ Rapor karmaşasını ve yarım kalan yanıtları önlemek amacıyla, her raporun
 4. **Kesin Kapanış Şartı:** Bu metin raporun mutlak en son satırı olmalıdır. Bu metinden sonra hiçbir ek başlık, öneri, sonraki görev tahmini veya kapanış notu yazılmayacaktır.
 5. **Raporlama Bütünlüğü:** Raporlarda başlık tekrarı yapılmayacak, yarım bırakılmış bölüm bırakılmayacak, aynı rapor mükerrer eklenmeyecek, PASS ve BLOCKED durumları birbirine karıştırılmayacaktır.
 
+---
+
+## 8. Kalıcı Tek Blok Markdown Raporlama Formatı (Kalıcı Kural)
+Bu kural (EL5-021 ve sonrası) asistan tarafından üretilen tüm teknik raporlar için bağlayıcıdır:
+1. **Tek Kod Bloğu:** Raporun tamamı istisnasız TEK BİR Markdown kod bloğu içinde sunulacaktır.
+2. **Açılış ve Kapanış:** Kod bloğu yalnızca ```markdown ile açılacak ve en sonunda ``` ile kapatılacaktır.
+3. **Dış Metin Yasağı:** Kod bloğunun dışında hiçbir açıklama, giriş, selamlama veya kapanış metni yer alamaz.
+4. **İlk Satır:** Kod bloğunun ilk satırı kesinlikle görev rapor başlığı olacaktır (örn. `EQUITYLENS-5 | EL5-XXX RAPORU`).
+5. **İç Kod Blokları Yasağı:** Markdown bloğu içinde yeni üçlü ters tırnak (```) açılmayacaktır; kodlar, komut çıktıları ve loglar 4 boşluk girinti (indentation) ile biçimlendirilecektir.
+6. **Kapanış Bildirimi:** Raporun en son satırı Bölüm 7'deki büyük harfli kapanış bildirimi olacak, hemen ardından kod bloğu ``` ile sonlandırılacaktır.
+

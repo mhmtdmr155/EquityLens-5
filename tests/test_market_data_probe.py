@@ -67,6 +67,7 @@ def test_alpaca_config_missing_env(monkeypatch: pytest.MonkeyPatch) -> None:
     """Verify that missing environment variables raise AuthenticationError."""
     monkeypatch.delenv("APCA_API_KEY_ID", raising=False)
     monkeypatch.delenv("APCA_API_SECRET_KEY", raising=False)
+    monkeypatch.setattr("scripts.market_data_probe.load_env_file", lambda *args, **kwargs: {})
 
     with pytest.raises(AuthenticationError, match="credentials missing"):
         AlpacaConfig.from_env()
@@ -521,6 +522,7 @@ def test_main_cli_unconfigured(
     monkeypatch.delenv("APCA_API_KEY_ID", raising=False)
     monkeypatch.delenv("APCA_API_SECRET_KEY", raising=False)
     monkeypatch.delenv("SEC_USER_AGENT", raising=False)
+    monkeypatch.setattr("scripts.market_data_probe.load_env_file", lambda *args, **kwargs: {})
 
     with caplog.at_level(logging.INFO):
         main()

@@ -29,6 +29,7 @@ def test_check_configuration_status_missing(monkeypatch: pytest.MonkeyPatch) -> 
     monkeypatch.delenv("APCA_API_KEY_ID", raising=False)
     monkeypatch.delenv("APCA_API_SECRET_KEY", raising=False)
     monkeypatch.delenv("SEC_USER_AGENT", raising=False)
+    monkeypatch.setattr("scripts.live_api_smoke.load_env_file", lambda *args, **kwargs: {})
 
     status = check_configuration_status()
     assert status["has_all_credentials"] is False
@@ -123,6 +124,7 @@ def test_main_live_smoke_missing_credentials_exits_1(
     monkeypatch.delenv("APCA_API_KEY_ID", raising=False)
     monkeypatch.delenv("APCA_API_SECRET_KEY", raising=False)
     monkeypatch.delenv("SEC_USER_AGENT", raising=False)
+    monkeypatch.setattr("scripts.live_api_smoke.load_env_file", lambda *args, **kwargs: {})
 
     with caplog.at_level(logging.INFO):
         exit_code = main()
