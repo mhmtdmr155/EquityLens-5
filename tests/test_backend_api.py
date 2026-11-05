@@ -284,3 +284,49 @@ def test_get_prices_endpoint_empty_results(client_with_seeded_db: TestClient) ->
     data = response.json()
     assert data["count"] == 0
     assert data["bars"] == []
+
+
+def test_get_prices_endpoint_order_desc(client_with_seeded_db: TestClient) -> None:
+    """Verify order=desc query parameter sorts bars with latest date first."""
+    response = client_with_seeded_db.get("/api/v1/prices/AAPL?order=desc")
+    assert response.status_code == 200
+    data = response.json()
+    assert data["count"] == 2
+    assert data["bars"][0]["session_date"] == "2026-10-21"
+    assert data["bars"][1]["session_date"] == "2026-10-20"
+
+
+def test_get_prices_endpoint_invalid_order_422(client_with_seeded_db: TestClient) -> None:
+    """Verify order values other than asc/desc return 422."""
+    response = client_with_seeded_db.get("/api/v1/prices/AAPL?order=random")
+    assert response.status_code == 422
+
+
+def test_cors_headers_configured(client_with_seeded_db: TestClient) -> None:
+    """Verify that CORS middleware responds appropriately for Vite dev server origin."""
+    response = client_with_seeded_db.get(
+        "/api/v1/health",
+        headers={"Origin": "http://localhost:5173"},
+    )
+    assert response.status_code == 200
+    assert response.headers.get("access-control-allow-origin") == "http://localhost:5173"
+    assert response.headers.get("access-control-allow-credentials") == "true"
+
+
+def test_get_experiment_metrics_endpoint(client_with_seeded_db: TestClient) -> None:
+    """Verify GET /api/v1/experiments/metrics returns valid experiment scores."""
+    response = client_with_seeded_db.get("/api/v1/experiments/metrics")
+    assert response.status_code == 200
+    data = response.json()
+    assert data["status"] == "SUCCESS"
+    assert "retrospective_models" in data
+    assert "expanding_cv_averages" in data
+    assert "B0a_majority" in data["retrospective_models"]
+    assert "M0_price_only" in data["retrospective_models"]
+    assert "M1_price_sec" in data["retrospective_models"]
+    assert "M2_price_sec_market" in data["retrospective_models"]
+    assert "disclaimer" in data
+    # Check that CV fold averages contain expected keys
+    assert "M0" in data["expanding_cv_averages"]
+    assert "M1" in data["expanding_cv_averages"]
+    assert "M2" in data["expanding_cv_averages"]

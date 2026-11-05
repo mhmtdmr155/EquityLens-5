@@ -124,3 +124,28 @@ class PredictionResponse(BaseModel):
     )
     data_source: str = Field(..., description="Underlying price bar data source and feed")
     warning: str = Field(..., description="Regulatory, freshness, and uncalibrated risk warning")
+
+
+class ModelScoreDetail(BaseModel):
+    """Evaluation metrics for an ML model candidate or baseline."""
+
+    accuracy: float = Field(..., description="Classification accuracy")
+    balanced_accuracy: float = Field(..., description="Balanced accuracy")
+    precision: float = Field(..., description="Precision for positive class")
+    recall: float = Field(..., description="Recall for positive class")
+    f1_score: float = Field(..., description="F1-score")
+    roc_auc: float | None = Field(default=None, description="Area under ROC curve")
+
+
+class ExperimentMetricsResponse(BaseModel):
+    """Response payload for offline machine learning experiment metrics."""
+
+    status: str = Field(..., description="Status of experiment data retrieval")
+    as_of_date: str = Field(..., description="Dataset cutoff date")
+    retrospective_models: dict[str, ModelScoreDetail] = Field(
+        ..., description="Test split performance across model configurations"
+    )
+    expanding_cv_averages: dict[str, ModelScoreDetail] = Field(
+        ..., description="Expanding window cross-validation averages across folds"
+    )
+    disclaimer: str = Field(..., description="Scientific research disclaimer")

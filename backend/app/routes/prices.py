@@ -36,6 +36,13 @@ def get_historical_prices(
         int,
         Query(ge=1, le=1000, description="Maximum number of bars to return"),
     ] = 100,
+    order: Annotated[
+        str,
+        Query(
+            pattern="^(asc|desc)$",
+            description="Sort order of session dates: 'asc' (default) or 'desc'",
+        ),
+    ] = "asc",
 ) -> PriceSeriesResponse:
     """Retrieve historical daily price bars for a tracked company ticker.
 
@@ -75,7 +82,10 @@ def get_historical_prices(
     if end_date:
         bars_stmt = bars_stmt.where(PriceBar.session_date <= end_date)
 
-    bars_stmt = bars_stmt.order_by(PriceBar.session_date.asc()).limit(limit)
+    if order == "desc":
+        bars_stmt = bars_stmt.order_by(PriceBar.session_date.desc()).limit(limit)
+    else:
+        bars_stmt = bars_stmt.order_by(PriceBar.session_date.asc()).limit(limit)
     bars = list(db.execute(bars_stmt).scalars().all())
 
     # Build response
