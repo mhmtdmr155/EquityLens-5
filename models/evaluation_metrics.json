@@ -1,0 +1,315 @@
+{
+  "selected_model": "M1_hist_gradient_boosting",
+  "validation_metrics": {
+    "status": "VALID",
+    "sample_count": 348,
+    "positive_ratio": 0.6092,
+    "negative_ratio": 0.3908,
+    "accuracy": 0.5747,
+    "balanced_accuracy": 0.5416,
+    "precision": 0.6391,
+    "recall": 0.6934,
+    "f1_score": 0.6652,
+    "roc_auc": 0.5783,
+    "confusion_matrix": {
+      "true_negative": 53,
+      "false_positive": 83,
+      "false_negative": 65,
+      "true_positive": 147
+    }
+  },
+  "test_metrics": {
+    "status": "VALID",
+    "sample_count": 432,
+    "positive_ratio": 0.5718,
+    "negative_ratio": 0.4282,
+    "accuracy": 0.5347,
+    "balanced_accuracy": 0.4981,
+    "precision": 0.5706,
+    "recall": 0.753,
+    "f1_score": 0.6492,
+    "roc_auc": 0.5065,
+    "confusion_matrix": {
+      "true_negative": 45,
+      "false_positive": 140,
+      "false_negative": 61,
+      "true_positive": 186
+    }
+  },
+  "test_by_symbol": {
+    "AAPL": {
+      "status": "VALID",
+      "sample_count": 93,
+      "positive_ratio": 0.6559,
+      "negative_ratio": 0.3441,
+      "accuracy": 0.5054,
+      "balanced_accuracy": 0.467,
+      "precision": 0.6316,
+      "recall": 0.5902,
+      "f1_score": 0.6102,
+      "roc_auc": 0.4477,
+      "confusion_matrix": {
+        "true_negative": 11,
+        "false_positive": 21,
+        "false_negative": 25,
+        "true_positive": 36
+      }
+    },
+    "DELL": {
+      "status": "VALID",
+      "sample_count": 93,
+      "positive_ratio": 0.6022,
+      "negative_ratio": 0.3978,
+      "accuracy": 0.5914,
+      "balanced_accuracy": 0.5278,
+      "precision": 0.6184,
+      "recall": 0.8393,
+      "f1_score": 0.7121,
+      "roc_auc": 0.5555,
+      "confusion_matrix": {
+        "true_negative": 8,
+        "false_positive": 29,
+        "false_negative": 9,
+        "true_positive": 47
+      }
+    },
+    "MU": {
+      "status": "VALID",
+      "sample_count": 93,
+      "positive_ratio": 0.4839,
+      "negative_ratio": 0.5161,
+      "accuracy": 0.5269,
+      "balanced_accuracy": 0.5403,
+      "precision": 0.5059,
+      "recall": 0.9556,
+      "f1_score": 0.6615,
+      "roc_auc": 0.6042,
+      "confusion_matrix": {
+        "true_negative": 6,
+        "false_positive": 42,
+        "false_negative": 2,
+        "true_positive": 43
+      }
+    },
+    "NVDA": {
+      "status": "VALID",
+      "sample_count": 93,
+      "positive_ratio": 0.5376,
+      "negative_ratio": 0.4624,
+      "accuracy": 0.4839,
+      "balanced_accuracy": 0.476,
+      "precision": 0.5179,
+      "recall": 0.58,
+      "f1_score": 0.5472,
+      "roc_auc": 0.4798,
+      "confusion_matrix": {
+        "true_negative": 16,
+        "false_positive": 27,
+        "false_negative": 21,
+        "true_positive": 29
+      }
+    },
+    "SPCX": {
+      "status": "VALID",
+      "sample_count": 60,
+      "positive_ratio": 0.5833,
+      "negative_ratio": 0.4167,
+      "accuracy": 0.5833,
+      "balanced_accuracy": 0.5229,
+      "precision": 0.5962,
+      "recall": 0.8857,
+      "f1_score": 0.7126,
+      "roc_auc": 0.5926,
+      "confusion_matrix": {
+        "true_negative": 4,
+        "false_positive": 21,
+        "false_negative": 4,
+        "true_positive": 31
+      }
+    }
+  },
+  "all_models_validation": {
+    "B0a_majority": {
+      "status": "VALID",
+      "sample_count": 348,
+      "positive_ratio": 0.6092,
+      "negative_ratio": 0.3908,
+      "accuracy": 0.6092,
+      "balanced_accuracy": 0.5,
+      "precision": 0.6092,
+      "recall": 1.0,
+      "f1_score": 0.7571,
+      "roc_auc": 0.5,
+      "confusion_matrix": {
+        "true_negative": 0,
+        "false_positive": 136,
+        "false_negative": 0,
+        "true_positive": 212
+      }
+    },
+    "B0b_momentum": {
+      "status": "VALID",
+      "sample_count": 348,
+      "positive_ratio": 0.6092,
+      "negative_ratio": 0.3908,
+      "accuracy": 0.4943,
+      "balanced_accuracy": 0.461,
+      "precision": 0.5804,
+      "recall": 0.6132,
+      "f1_score": 0.5963,
+      "roc_auc": 0.4093,
+      "confusion_matrix": {
+        "true_negative": 42,
+        "false_positive": 94,
+        "false_negative": 82,
+        "true_positive": 130
+      }
+    },
+    "M0_logistic_regression": {
+      "status": "VALID",
+      "sample_count": 348,
+      "positive_ratio": 0.6092,
+      "negative_ratio": 0.3908,
+      "accuracy": 0.5201,
+      "balanced_accuracy": 0.4967,
+      "precision": 0.6066,
+      "recall": 0.6038,
+      "f1_score": 0.6052,
+      "roc_auc": 0.5324,
+      "confusion_matrix": {
+        "true_negative": 53,
+        "false_positive": 83,
+        "false_negative": 84,
+        "true_positive": 128
+      }
+    },
+    "M1_random_forest": {
+      "status": "VALID",
+      "sample_count": 348,
+      "positive_ratio": 0.6092,
+      "negative_ratio": 0.3908,
+      "accuracy": 0.5402,
+      "balanced_accuracy": 0.4803,
+      "precision": 0.597,
+      "recall": 0.7547,
+      "f1_score": 0.6667,
+      "roc_auc": 0.5346,
+      "confusion_matrix": {
+        "true_negative": 28,
+        "false_positive": 108,
+        "false_negative": 52,
+        "true_positive": 160
+      }
+    },
+    "M1_hist_gradient_boosting": {
+      "status": "VALID",
+      "sample_count": 348,
+      "positive_ratio": 0.6092,
+      "negative_ratio": 0.3908,
+      "accuracy": 0.5747,
+      "balanced_accuracy": 0.5416,
+      "precision": 0.6391,
+      "recall": 0.6934,
+      "f1_score": 0.6652,
+      "roc_auc": 0.5783,
+      "confusion_matrix": {
+        "true_negative": 53,
+        "false_positive": 83,
+        "false_negative": 65,
+        "true_positive": 147
+      }
+    }
+  },
+  "all_models_test": {
+    "B0a_majority": {
+      "status": "VALID",
+      "sample_count": 432,
+      "positive_ratio": 0.5718,
+      "negative_ratio": 0.4282,
+      "accuracy": 0.5718,
+      "balanced_accuracy": 0.5,
+      "precision": 0.5718,
+      "recall": 1.0,
+      "f1_score": 0.7275,
+      "roc_auc": 0.5,
+      "confusion_matrix": {
+        "true_negative": 0,
+        "false_positive": 185,
+        "false_negative": 0,
+        "true_positive": 247
+      }
+    },
+    "B0b_momentum": {
+      "status": "VALID",
+      "sample_count": 432,
+      "positive_ratio": 0.5718,
+      "negative_ratio": 0.4282,
+      "accuracy": 0.4259,
+      "balanced_accuracy": 0.4125,
+      "precision": 0.498,
+      "recall": 0.5061,
+      "f1_score": 0.502,
+      "roc_auc": 0.381,
+      "confusion_matrix": {
+        "true_negative": 59,
+        "false_positive": 126,
+        "false_negative": 122,
+        "true_positive": 125
+      }
+    },
+    "M0_logistic_regression": {
+      "status": "VALID",
+      "sample_count": 432,
+      "positive_ratio": 0.5718,
+      "negative_ratio": 0.4282,
+      "accuracy": 0.4861,
+      "balanced_accuracy": 0.4706,
+      "precision": 0.5479,
+      "recall": 0.5789,
+      "f1_score": 0.563,
+      "roc_auc": 0.4572,
+      "confusion_matrix": {
+        "true_negative": 67,
+        "false_positive": 118,
+        "false_negative": 104,
+        "true_positive": 143
+      }
+    },
+    "M1_random_forest": {
+      "status": "VALID",
+      "sample_count": 432,
+      "positive_ratio": 0.5718,
+      "negative_ratio": 0.4282,
+      "accuracy": 0.5208,
+      "balanced_accuracy": 0.4874,
+      "precision": 0.5633,
+      "recall": 0.7206,
+      "f1_score": 0.6323,
+      "roc_auc": 0.4593,
+      "confusion_matrix": {
+        "true_negative": 47,
+        "false_positive": 138,
+        "false_negative": 69,
+        "true_positive": 178
+      }
+    },
+    "M1_hist_gradient_boosting": {
+      "status": "VALID",
+      "sample_count": 432,
+      "positive_ratio": 0.5718,
+      "negative_ratio": 0.4282,
+      "accuracy": 0.5602,
+      "balanced_accuracy": 0.534,
+      "precision": 0.596,
+      "recall": 0.7166,
+      "f1_score": 0.6507,
+      "roc_auc": 0.5164,
+      "confusion_matrix": {
+        "true_negative": 65,
+        "false_positive": 120,
+        "false_negative": 70,
+        "true_positive": 177
+      }
+    }
+  }
+}
